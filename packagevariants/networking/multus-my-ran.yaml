@@ -1,0 +1,13 @@
+# Multus PackageVariant for my-ran cluster
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: multus-my-ran
+  namespace: default
+spec:
+  upstream:
+    repo: nephio-blueprints-approachb
+    package: networking/multus-cni
+  downstream:
+    repo: nephio-my-ran
+    package: multus-cni

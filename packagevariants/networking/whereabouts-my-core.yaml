@@ -1,0 +1,13 @@
+# Whereabouts PackageVariant for my-core cluster
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: whereabouts-my-core
+  namespace: default
+spec:
+  upstream:
+    repo: nephio-blueprints-approachb
+    package: networking/whereabouts-ipam
+  downstream:
+    repo: nephio-my-core
+    package: whereabouts-ipam

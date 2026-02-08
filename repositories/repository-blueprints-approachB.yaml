@@ -1,0 +1,14 @@
+# Repository registration for Approach B blueprints
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: Repository
+metadata:
+  name: nephio-blueprints-approachb
+  namespace: default
+spec:
+  type: git
+  content: Package
+  git:
+    repo: https://github.com/RehanFazal77/nephio-blueprints-approachB.git
+    branch: main
+    directory: /
+  deployment: false

@@ -1,0 +1,13 @@
+# Multus PackageVariant for my-core cluster
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: multus-my-core
+  namespace: default
+spec:
+  upstream:
+    repo: nephio-blueprints-approachb
+    package: networking/multus-cni
+  downstream:
+    repo: nephio-my-core
+    package: multus-cni

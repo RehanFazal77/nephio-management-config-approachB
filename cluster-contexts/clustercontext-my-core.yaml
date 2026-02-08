@@ -1,0 +1,10 @@
+# ClusterContext for my-core
+apiVersion: infra.nephio.org/v1alpha1
+kind: ClusterContext
+metadata:
+  name: my-core
+spec:
+  clusterName: my-core
+  clusterType: workload
+  siteCode: site-core-01
+  masterInterface: eth0

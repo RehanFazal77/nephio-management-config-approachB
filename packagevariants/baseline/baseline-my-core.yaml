@@ -1,0 +1,23 @@
+# Baseline PackageVariant for my-core cluster
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: baseline-my-core
+  namespace: default
+spec:
+  upstream:
+    repo: nephio-blueprints-approachb
+    package: cluster-baseline
+  downstream:
+    repo: nephio-my-core
+    package: cluster-baseline
+  pipeline:
+    mutators:
+      - image: gcr.io/kpt-fn/apply-setters:v0.2
+        configMap:
+          cluster-name: my-core
+          cluster-type: workload
+          workload-type: core
+          site-id: site-core-01
+          namespace-prefix: ""
+          storage-class-name: local-path

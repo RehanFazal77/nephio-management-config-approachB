@@ -1,0 +1,14 @@
+# Repository for my-core cluster deployment packages
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: Repository
+metadata:
+  name: nephio-my-core
+  namespace: default
+spec:
+  type: git
+  content: Package
+  git:
+    repo: https://github.com/RehanFazal77/nephio-my-core.git
+    branch: main
+    directory: /
+  deployment: true

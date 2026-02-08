@@ -1,0 +1,23 @@
+# Addons PackageVariant for my-core cluster
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: addons-my-core
+  namespace: default
+spec:
+  upstream:
+    repo: nephio-blueprints-approachb
+    package: platform-addons
+  downstream:
+    repo: nephio-my-core
+    package: platform-addons
+  pipeline:
+    mutators:
+      - image: gcr.io/kpt-fn/apply-setters:v0.2
+        configMap:
+          cluster-name: my-core
+          local-path-provisioner: "true"
+          storage-class-name: local-path
+          enable-prometheus: "false"
+          enable-metrics-server: "true"
+          enable-nginx-ingress: "false"

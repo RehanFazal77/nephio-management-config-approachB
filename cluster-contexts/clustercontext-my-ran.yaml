@@ -1,0 +1,10 @@
+# ClusterContext for my-ran
+apiVersion: infra.nephio.org/v1alpha1
+kind: ClusterContext
+metadata:
+  name: my-ran
+spec:
+  clusterName: my-ran
+  clusterType: workload
+  siteCode: site-ran-01
+  masterInterface: eth0

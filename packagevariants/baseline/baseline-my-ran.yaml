@@ -1,0 +1,23 @@
+# Baseline PackageVariant for my-ran cluster
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: baseline-my-ran
+  namespace: default
+spec:
+  upstream:
+    repo: nephio-blueprints-approachb
+    package: cluster-baseline
+  downstream:
+    repo: nephio-my-ran
+    package: cluster-baseline
+  pipeline:
+    mutators:
+      - image: gcr.io/kpt-fn/apply-setters:v0.2
+        configMap:
+          cluster-name: my-ran
+          cluster-type: workload
+          workload-type: ran
+          site-id: site-ran-01
+          namespace-prefix: ""
+          storage-class-name: local-path
