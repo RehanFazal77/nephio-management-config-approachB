@@ -1,0 +1,15 @@
+# PackageVariant to deploy OAI RAN blueprint to my-ran cluster
+# Triggers: interface-fn → IPAM → nad-fn → auto IPClaim + NAD generation
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-ran-my-ran
+  namespace: default
+spec:
+  upstream:
+    repo: nephio-blueprints-approachb
+    package: workloads/oai-ran
+    revision: main
+  downstream:
+    repo: nephio-my-ran
+    package: oai-ran

@@ -1,0 +1,16 @@
+# WorkloadCluster for RAN cluster — Apply to Management Cluster
+# This tells nad-fn which physical NIC to use in NAD config
+# IMPORTANT: Update masterInterface to match your RAN cluster's actual NIC
+apiVersion: infra.nephio.org/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: my-ran
+  namespace: default
+  labels:
+    nephio.org/site: my-ran
+    nephio.org/cluster-type: ran
+spec:
+  clusterName: my-ran
+  cnis:
+    - macvlan
+  masterInterface: ens4f0

@@ -1,0 +1,15 @@
+# PackageVariant to deploy OAI RAN blueprint to core cluster
+# This triggers: interface-fn → IPAM → nad-fn → NADs auto-generated
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-ran-my-core
+  namespace: default
+spec:
+  upstream:
+    repo: nephio-blueprints-approachB
+    package: workloads/oai-ran
+    revision: main
+  downstream:
+    repo: nephio-my-core
+    package: oai-ran

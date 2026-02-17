@@ -1,0 +1,15 @@
+# WorkloadCluster for core cluster — Apply to Management Cluster
+# This tells nad-fn which physical NIC to use in NAD config
+apiVersion: infra.nephio.org/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: my-core
+  namespace: default
+  labels:
+    nephio.org/site: my-core
+    nephio.org/cluster-type: core
+spec:
+  clusterName: my-core
+  cnis:
+    - macvlan
+  masterInterface: ens4f0
