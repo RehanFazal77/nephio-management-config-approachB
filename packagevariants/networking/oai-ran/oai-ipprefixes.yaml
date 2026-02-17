@@ -17,6 +17,7 @@ spec:
     name: vpc-control
   labels:
     nephio.org/address-family: ipv4
+    nephio.org/cluster-name: my-ran
 ---
 # IP Pool for N3 (User Plane - gNB to UPF)
 apiVersion: ipam.resource.nephio.org/v1alpha1
@@ -33,6 +34,7 @@ spec:
     name: vpc-userplane
   labels:
     nephio.org/address-family: ipv4
+    nephio.org/cluster-name: my-ran
 ---
 # IP Pool for RU (Fronthaul - gNB to Radio Unit)
 apiVersion: ipam.resource.nephio.org/v1alpha1
@@ -49,3 +51,4 @@ spec:
     name: vpc-fronthaul
   labels:
     nephio.org/address-family: ipv4
+    nephio.org/cluster-name: my-ran
