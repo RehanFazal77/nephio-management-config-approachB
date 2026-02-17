@@ -1,10 +1,19 @@
-# ClusterContext for my-core
+#==============================================================================
+# ClusterContext for my-core (Core Workload Cluster)
+#==============================================================================
+
 apiVersion: infra.nephio.org/v1alpha1
 kind: ClusterContext
 metadata:
   name: my-core
+  namespace: default
+  labels:
+    nephio.org/cluster-type: workload
+    nephio.org/workload-type: core
+    nephio.org/site-code: site-core-01
+  annotations:
+    nephio.org/description: "Core workload cluster for Free5GC deployment"
+    nephio.org/environment: "development"
 spec:
-  clusterName: my-core
-  clusterType: workload
-  siteCode: site-core-01
-  masterInterface: eth0
+  siteCode: my-core
+

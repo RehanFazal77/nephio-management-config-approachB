@@ -11,4 +11,7 @@ spec:
     repo: https://github.com/RehanFazal77/nephio-my-ran.git
     branch: main
     directory: /
+    secretRef:
+      name: github-credentials
   deployment: true
+

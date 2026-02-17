@@ -1,10 +1,19 @@
-# ClusterContext for my-ran
+#==============================================================================
+# ClusterContext for my-ran (RAN Workload Cluster)
+#==============================================================================
+
 apiVersion: infra.nephio.org/v1alpha1
 kind: ClusterContext
 metadata:
   name: my-ran
+  namespace: default
+  labels:
+    nephio.org/cluster-type: workload
+    nephio.org/workload-type: ran
+    nephio.org/site-code: site-ran-01
+  annotations:
+    nephio.org/description: "RAN workload cluster for OAI deployment"
+    nephio.org/environment: "development"
 spec:
-  clusterName: my-ran
-  clusterType: workload
-  siteCode: site-ran-01
-  masterInterface: eth0
+  siteCode: my-ran
+

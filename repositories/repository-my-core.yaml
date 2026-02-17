@@ -12,3 +12,4 @@ spec:
     branch: main
     directory: /
   deployment: true
+
