@@ -1,0 +1,9 @@
+# VLANIndex for VLAN allocation
+# Required for Nephio to allocate VLANs to interfaces
+# Apply on the management cluster
+---
+apiVersion: vlan.resource.nephio.org/v1alpha1
+kind: VLANIndex
+metadata:
+  name: ran-vlans
+spec: {}

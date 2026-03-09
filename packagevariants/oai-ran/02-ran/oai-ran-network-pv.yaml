@@ -1,0 +1,20 @@
+# OAI RAN Network Blueprint PackageVariant
+# Deploys the oai-ran-network blueprint (interfaces + NADs) to the target cluster
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-ran-network-ran
+spec:
+  upstream:
+    repo: catalog-workloads-oai-ran
+    package: oai-ran-network
+  downstream:
+    repo: nephio-ran
+    package: oai-ran-network
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: ran

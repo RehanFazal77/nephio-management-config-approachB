@@ -1,0 +1,19 @@
+# OAI Core - AMF (the one CUCP depends on!)
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-amf-ran
+spec:
+  upstream:
+    repo: oai-core-packages
+    package: oai-amf
+  downstream:
+    repo: nephio-ran
+    package: oai-amf
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: ran

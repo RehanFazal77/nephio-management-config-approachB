@@ -1,0 +1,20 @@
+# OAI CUUP PackageVariant
+# Deploys the CU User Plane (interfaces: e1, f1u, n3)
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-cuup-ran
+spec:
+  upstream:
+    repo: catalog-workloads-oai-ran-custom
+    package: pkg-example-cuup-bp
+  downstream:
+    repo: nephio-ran
+    package: oai-ran-cuup
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: ran

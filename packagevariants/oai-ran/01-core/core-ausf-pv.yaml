@@ -1,0 +1,19 @@
+# OAI Core - AUSF
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-ausf-ran
+spec:
+  upstream:
+    repo: oai-core-packages
+    package: oai-ausf
+  downstream:
+    repo: nephio-ran
+    package: oai-ausf
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: ran

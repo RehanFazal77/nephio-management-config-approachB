@@ -1,0 +1,19 @@
+# OAI Core - Control Plane Operators
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-cp-operators-ran
+spec:
+  upstream:
+    repo: oai-core-packages
+    package: oai-cp-operators
+  downstream:
+    repo: nephio-ran
+    package: oai-cp-operators
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: ran

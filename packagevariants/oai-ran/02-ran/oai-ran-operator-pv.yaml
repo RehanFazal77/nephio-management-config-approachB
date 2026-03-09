@@ -1,0 +1,20 @@
+# OAI RAN Operator PackageVariant
+# Deploys the OAI RAN operator (watches NFDeployment CRs and creates CUCP/CUUP/DU pods)
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-ran-operator-ran
+spec:
+  upstream:
+    repo: catalog-workloads-oai-ran
+    package: oai-ran-operator
+  downstream:
+    repo: nephio-ran
+    package: oai-ran-operator
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: ran

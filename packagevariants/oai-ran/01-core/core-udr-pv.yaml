@@ -1,0 +1,19 @@
+# OAI Core - UDR
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-udr-ran
+spec:
+  upstream:
+    repo: oai-core-packages
+    package: oai-udr
+  downstream:
+    repo: nephio-ran
+    package: oai-udr
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: ran

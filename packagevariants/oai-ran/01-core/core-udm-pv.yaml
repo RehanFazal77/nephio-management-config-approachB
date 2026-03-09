@@ -1,0 +1,19 @@
+# OAI Core - UDM
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-udm-ran
+spec:
+  upstream:
+    repo: oai-core-packages
+    package: oai-udm
+  downstream:
+    repo: nephio-ran
+    package: oai-udm
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: ran

@@ -1,0 +1,20 @@
+# OAI DU PackageVariant
+# Deploys the Distributed Unit (interfaces: f1)
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-du-ran
+spec:
+  upstream:
+    repo: catalog-workloads-oai-ran-custom
+    package: pkg-example-du-bp
+  downstream:
+    repo: nephio-ran
+    package: oai-ran-du
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: ran

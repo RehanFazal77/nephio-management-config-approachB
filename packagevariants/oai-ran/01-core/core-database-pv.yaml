@@ -1,0 +1,19 @@
+# OAI Core - Database (MySQL) - Deploy FIRST
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-database-ran
+spec:
+  upstream:
+    repo: oai-core-packages
+    package: database
+  downstream:
+    repo: nephio-ran
+    package: oai-database
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: ran

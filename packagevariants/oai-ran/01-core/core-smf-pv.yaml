@@ -1,0 +1,19 @@
+# OAI Core - SMF
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: oai-smf-ran
+spec:
+  upstream:
+    repo: oai-core-packages
+    package: oai-smf
+  downstream:
+    repo: nephio-ran
+    package: oai-smf
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: ran
