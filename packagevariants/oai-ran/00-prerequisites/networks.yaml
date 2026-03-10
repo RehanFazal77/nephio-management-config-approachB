@@ -82,11 +82,11 @@ spec:
 apiVersion: infra.nephio.org/v1alpha1
 kind: Network
 metadata:
-  name: n3
+  name: vpc-internet
 spec:
   topology: nephio
   routingTables:
-  - name: n3
+  - name: vpc-internet
     prefixes:
     - prefix: 172:6::/32
       labels:
@@ -96,9 +96,9 @@ spec:
         nephio.org/network-name: n3
     interfaces:
     - kind: bridgedomain
-      bridgeDomainName: n3
+      bridgeDomainName: vpc-internet
   bridgeDomains:
-  - name: n3
+  - name: vpc-internet
     interfaces:
     - kind: interface
       selector:
@@ -108,11 +108,11 @@ spec:
 apiVersion: infra.nephio.org/v1alpha1
 kind: Network
 metadata:
-  name: n4
+  name: vpc-internal
 spec:
   topology: nephio
   routingTables:
-  - name: n4
+  - name: vpc-internal
     prefixes:
     - prefix: 172:7::/32
       labels:
@@ -122,9 +122,9 @@ spec:
         nephio.org/network-name: n4
     interfaces:
     - kind: bridgedomain
-      bridgeDomainName: n4
+      bridgeDomainName: vpc-internal
   bridgeDomains:
-  - name: n4
+  - name: vpc-internal
     interfaces:
     - kind: interface
       selector:

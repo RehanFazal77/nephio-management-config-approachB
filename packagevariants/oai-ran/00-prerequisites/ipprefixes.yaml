@@ -44,7 +44,7 @@ spec:
 apiVersion: ipam.resource.nephio.org/v1alpha1
 kind: IPPrefix
 metadata:
-  name: n3-ran
+  name: vpc-internet-ran
   labels:
     nephio.org/address-family: ipv4
     nephio.org/cluster-name: ran
@@ -52,12 +52,12 @@ metadata:
 spec:
   prefix: 172.6.0.0/24
   networkInstance:
-    name: n3
+    name: vpc-internet
 ---
 apiVersion: ipam.resource.nephio.org/v1alpha1
 kind: IPPrefix
 metadata:
-  name: n4-ran
+  name: vpc-internal-ran
   labels:
     nephio.org/address-family: ipv4
     nephio.org/cluster-name: ran
@@ -65,4 +65,4 @@ metadata:
 spec:
   prefix: 172.7.0.0/24
   networkInstance:
-    name: n4
+    name: vpc-internal

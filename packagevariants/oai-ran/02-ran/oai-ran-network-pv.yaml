@@ -6,8 +6,8 @@ metadata:
   name: oai-ran-network-ran
 spec:
   upstream:
-    repo: catalog-workloads-oai-ran
-    package: oai-ran-network
+    repo: nephio-blueprints-approachb
+    package: workloads/oai-ran-network
   downstream:
     repo: nephio-ran
     package: oai-ran-network

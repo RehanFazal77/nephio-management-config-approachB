@@ -1,7 +1,7 @@
 # Register the forked OAI catalog repo in Porch
 # This repo has CUCP/CUUP/DU packages without namespace.yaml (removed to avoid ConfigSync conflicts)
 # Apply on the management cluster BEFORE deploying RAN PVs
-apiVersion: config.porch.kpt.dev/v1alpha2
+apiVersion: config.porch.kpt.dev/v1alpha1
 kind: Repository
 metadata:
   name: catalog-workloads-oai-ran-custom
