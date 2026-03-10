@@ -1,5 +1,6 @@
 # Network CRs for OAI RAN deployment
 # Apply on the management cluster BEFORE any PackageVariants
+# Network names and prefixes match the upstream OAI packages exactly
 ---
 apiVersion: infra.nephio.org/v1alpha1
 kind: Network
@@ -16,6 +17,12 @@ spec:
     - prefix: 172.2.0.0/16
       labels:
         nephio.org/network-name: n2
+    - prefix: 172:3::/32
+      labels:
+        nephio.org/network-name: n3
+    - prefix: 172.3.0.0/16
+      labels:
+        nephio.org/network-name: n3
     interfaces:
     - kind: bridgedomain
       bridgeDomainName: vpc-ran
@@ -82,44 +89,14 @@ spec:
 apiVersion: infra.nephio.org/v1alpha1
 kind: Network
 metadata:
-  name: vpc-internet
-spec:
-  topology: nephio
-  routingTables:
-  - name: vpc-internet
-    prefixes:
-    - prefix: 172:6::/32
-      labels:
-        nephio.org/network-name: n3
-    - prefix: 172.6.0.0/16
-      labels:
-        nephio.org/network-name: n3
-    interfaces:
-    - kind: bridgedomain
-      bridgeDomainName: vpc-internet
-  bridgeDomains:
-  - name: vpc-internet
-    interfaces:
-    - kind: interface
-      selector:
-        matchExpressions:
-        - {key: nephio.org/cluster-name, operator: Exists}
----
-apiVersion: infra.nephio.org/v1alpha1
-kind: Network
-metadata:
   name: vpc-internal
 spec:
   topology: nephio
   routingTables:
   - name: vpc-internal
     prefixes:
-    - prefix: 172:7::/32
-      labels:
-        nephio.org/network-name: n4
-    - prefix: 172.7.0.0/16
-      labels:
-        nephio.org/network-name: n4
+    - prefix: 172:1::/32
+    - prefix: 172.1.0.0/16
     interfaces:
     - kind: bridgedomain
       bridgeDomainName: vpc-internal
