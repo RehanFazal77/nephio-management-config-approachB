@@ -1,0 +1,21 @@
+# SD-Core UPF PackageVariant
+# MUST be deployed FIRST before AMF and SMF (they have Dependency CRs on UPF)
+# Interfaces: N3 (vpc-ran), N4 (vpc-internal), N6 (vpc-internet)
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: sdcore5g-upf-core
+spec:
+  upstream:
+    repo: sdcore-packages
+    package: pkg-example-upf-bp
+  downstream:
+    repo: nephio-core
+    package: sdcore5g-upf
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: core

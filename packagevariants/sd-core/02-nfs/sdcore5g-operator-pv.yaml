@@ -1,0 +1,16 @@
+# SD-Core Operator PackageVariant
+# Deploys the sdcore5g-operator controller on the core workload cluster
+# Must be deployed BEFORE AMF, SMF, UPF (operator watches NFDeployment CRs)
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: sdcore5g-operator-core
+spec:
+  upstream:
+    repo: sdcore-packages
+    package: sdcore5g-operator
+  downstream:
+    repo: nephio-core
+    package: sdcore5g-operator
+  annotations:
+    approval.nephio.org/policy: initial

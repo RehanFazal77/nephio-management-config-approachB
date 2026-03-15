@@ -1,0 +1,21 @@
+# SD-Core AMF PackageVariant
+# Deploy AFTER UPF is Published (AMF has Dependency CR on UPF)
+# Interfaces: N2 (vpc-ran)
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: sdcore5g-amf-core
+spec:
+  upstream:
+    repo: sdcore-packages
+    package: pkg-example-amf-bp
+  downstream:
+    repo: nephio-core
+    package: sdcore5g-amf
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: core

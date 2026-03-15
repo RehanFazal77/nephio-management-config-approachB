@@ -1,0 +1,40 @@
+# Network update for SD-Core deployment
+# vpc-internet needs N6 prefix (172.0.0.0/16) in addition to existing N3 prefix (172.6.0.0/16)
+# Apply this AFTER the OAI-RAN prerequisites (it will merge with existing vpc-internet)
+#
+# NOTE: vpc-ran and vpc-internal already exist from OAI-RAN and work as-is for SD-Core
+# Only vpc-internet needs updating for SD-Core's UPF N6 interface
+---
+apiVersion: infra.nephio.org/v1alpha1
+kind: Network
+metadata:
+  name: vpc-internet
+spec:
+  topology: nephio
+  routingTables:
+  - name: vpc-internet
+    prefixes:
+    # N3 prefix (used by OAI-RAN CUUP)
+    - prefix: 172:6::/32
+      labels:
+        nephio.org/network-name: n3
+    - prefix: 172.6.0.0/16
+      labels:
+        nephio.org/network-name: n3
+    # N6 prefix (used by SD-Core UPF for internet exit)
+    - prefix: 172::/32
+      labels:
+        nephio.org/network-name: n6
+    - prefix: 172.0.0.0/16
+      labels:
+        nephio.org/network-name: n6
+    interfaces:
+    - kind: bridgedomain
+      bridgeDomainName: vpc-internet
+  bridgeDomains:
+  - name: vpc-internet
+    interfaces:
+    - kind: interface
+      selector:
+        matchExpressions:
+        - {key: nephio.org/cluster-name, operator: Exists}

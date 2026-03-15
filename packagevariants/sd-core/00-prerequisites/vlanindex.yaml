@@ -1,0 +1,6 @@
+# VLANIndex for the core cluster
+# Used by Nephio VLAN allocator to assign VLAN IDs
+apiVersion: vlan.resource.nephio.org/v1alpha1
+kind: VLANIndex
+metadata:
+  name: core

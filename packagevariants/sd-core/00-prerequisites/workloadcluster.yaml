@@ -1,0 +1,15 @@
+# WorkloadCluster CR for the SD-Core target cluster
+# Defines CNI type and master interface for VLAN/macvlan traffic
+# Apply on the management cluster
+apiVersion: infra.nephio.org/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: core
+  labels:
+    nephio.org/cluster-type: core
+    nephio.org/site: core
+spec:
+  clusterName: core
+  cnis:
+  - macvlan
+  masterInterface: eno49   # UPDATE: match your core cluster's NIC name

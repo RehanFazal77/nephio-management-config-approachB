@@ -1,0 +1,21 @@
+# SD-Core SMF PackageVariant
+# Deploy AFTER UPF is Published (SMF has Dependency CR on UPF)
+# Interfaces: N4 (vpc-internal)
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: sdcore5g-smf-core
+spec:
+  upstream:
+    repo: sdcore-packages
+    package: pkg-example-smf-bp
+  downstream:
+    repo: nephio-core
+    package: sdcore5g-smf
+  annotations:
+    approval.nephio.org/policy: initial
+  injectors:
+  - group: infra.nephio.org
+    version: v1alpha1
+    kind: WorkloadCluster
+    name: core

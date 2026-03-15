@@ -1,0 +1,16 @@
+# SD-Core Control Plane PackageVariant
+# Deploys: NRF, UDR, UDM, AUSF, NSSF, PCF, WebUI, MongoDB, Kafka, MetricFunc
+# No Multus required - uses K8s default ClusterIP network
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: sdcore5g-cp-core
+spec:
+  upstream:
+    repo: sdcore-packages
+    package: sdcore5g-cp
+  downstream:
+    repo: nephio-core
+    package: sdcore5g-cp
+  annotations:
+    approval.nephio.org/policy: initial

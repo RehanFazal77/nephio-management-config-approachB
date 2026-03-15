@@ -1,0 +1,32 @@
+# SD-Core repo registration for Porch
+# Register sdcore-packages as upstream source + create downstream deployment repo
+---
+# Upstream: SD-Core packages (blueprints)
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: Repository
+metadata:
+  name: sdcore-packages
+spec:
+  type: git
+  content: Package
+  git:
+    repo: https://github.com/RehanFazal77/sdcore-packages.git
+    branch: main
+    secretRef:
+      name: github-credentials   # Only needed if repo is private
+---
+# Downstream: deployment repo for core cluster
+# Porch pushes rendered packages here, ConfigSync pulls from here
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: Repository
+metadata:
+  name: nephio-core
+spec:
+  type: git
+  content: Package
+  deployment: true
+  git:
+    repo: https://github.com/RehanFazal77/nephio-core.git  # UPDATE: create this repo
+    branch: main
+    secretRef:
+      name: github-credentials
